@@ -2,7 +2,6 @@ class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
         int n = nums.length; 
         Map<Integer, Integer> remainders = new HashMap<>(); 
-        remainders.put(0, -1); 
         int prefixSum = 0; 
         int remainder = 0; 
         for(int i = 0; i < n; i++) {
@@ -18,7 +17,9 @@ class Solution {
             } else {
                 remainders.put(remainder,i); 
             }
-           
+            if(prefixSum % k ==0 && i >= 1 ) {
+            return true; 
+        }
 
         }
         
