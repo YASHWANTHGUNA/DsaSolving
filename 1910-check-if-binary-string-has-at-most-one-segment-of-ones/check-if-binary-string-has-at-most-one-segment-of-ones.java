@@ -3,7 +3,7 @@ class Solution {
         boolean zeroSeen = false; 
         for(char ch : s.toCharArray()) {
             if(ch == '0') zeroSeen = true; 
-            if(ch == '1' && zeroSeen) {
+            if( zeroSeen &&  ch == '1' ) {
                 return false; 
             }
         }
