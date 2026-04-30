@@ -4,11 +4,13 @@ class Solution {
         int[] ans = new int[n]; 
         Stack<Integer> st = new Stack<>(); 
         for(int i = 0; i < n; i++) {
-            while(!st.isEmpty() && temperatures[st.peek()] < temperatures[i]) {
+         
+            while(!st.isEmpty() && temperatures[i] > temperatures[st.peek()]) {
                 int idx = st.pop(); 
                 ans[idx] = i-idx; 
             }
             st.push(i); 
+           
         
         }
         return ans; 
