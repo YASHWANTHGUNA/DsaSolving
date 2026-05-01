@@ -10,32 +10,31 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-
-        // Dummy node to simplify head handling
         ListNode dummy = new ListNode(-1);
-        ListNode tail = dummy;
-
-        ListNode p1 = list1;
-        ListNode p2 = list2;
-
-        // While both lists have nodes
-        while (p1 != null && p2 != null) {
-
-            if (p1.val <= p2.val) {
-                tail.next = p1;   // attach p1
-                p1 = p1.next;     // move p1
-            } else {
-                tail.next = p2;   // attach p2
-                p2 = p2.next;     // move p2
+        ListNode curr = dummy; 
+        while(list1 != null && list2 != null) {
+            if(list1.val <= list2.val) {
+                curr.next = new ListNode(list1.val); 
+                list1 = list1.next; 
             }
+             else {
+                curr.next = new ListNode(list2.val); 
+                list2 = list2.next; 
+            }
+            curr = curr.next; 
 
-            tail = tail.next;     // move tail
+
         }
-
-        // Attach remaining nodes
-        if (p1 != null) tail.next = p1;
-        if (p2 != null) tail.next = p2;
-
-        return dummy.next; // real head
+        while(list1 != null) {
+            curr.next = new ListNode(list1.val); 
+            list1 = list1.next; 
+            curr = curr.next; 
+        }
+        while(list2 != null) {
+            curr.next = new ListNode(list2.val); 
+            list2 = list2.next; 
+            curr = curr.next; 
+        }
+        return dummy.next;
     }
 }
